@@ -7,6 +7,7 @@ import Hello from './components/Hello';
 // import FunctionalComponents from './components/FunctionalComponents';
 import {FunctionalComponents} from './components/FunctionalComponents';
 import ClassComponents from './components/ClassComponents';
+import JSX from './components/JSX';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       {/* <Hello/> */}
       <FunctionalComponents/>
       <ClassComponents/>
+      <JSX/>
     </div>
   );
 }
