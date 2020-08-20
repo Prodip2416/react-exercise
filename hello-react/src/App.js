@@ -11,7 +11,8 @@ import Hello from './components/Hello';
 // import FunctionalProps from './components/FunctionalProps';
 // import ClassProps from './components/ClassProps';
 // import State from './components/State';
-import SetState from './components/SetState';
+// import SetState from './components/SetState';
+import Destructuring from './components/Destructuring';
 
 function App() {
   return (
@@ -34,7 +35,9 @@ function App() {
       </ClassProps> */}
 
       {/* <State/> */}
-      <SetState/>
+      {/* <SetState/> */}
+      <Destructuring name="Harry" country="USA"/>
+      <Destructuring name="Piter" country="UK"/>
     </div>
   );
 }
