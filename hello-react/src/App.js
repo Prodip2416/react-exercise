@@ -5,9 +5,10 @@ import Greet from './components/Greet';
 import Welcome from './components/Welcome';
 import Hello from './components/Hello';
 // import FunctionalComponents from './components/FunctionalComponents';
-import {FunctionalComponents} from './components/FunctionalComponents';
-import ClassComponents from './components/ClassComponents';
-import JSX from './components/JSX';
+// import {FunctionalComponents} from './components/FunctionalComponents';
+// import ClassComponents from './components/ClassComponents';
+// import JSX from './components/JSX';
+import FunctionalProps from './components/FunctionalProps';
 
 function App() {
   return (
@@ -15,9 +16,14 @@ function App() {
       {/* <Greet/> */}
       {/* <Welcome/> */}
       {/* <Hello/> */}
-      <FunctionalComponents/>
+      {/* <FunctionalComponents/>
       <ClassComponents/>
-      <JSX/>
+      <JSX/> */}
+      <FunctionalProps name="Piter">
+        <p>This a Piter Paragraph.</p>
+      </FunctionalProps>
+      <FunctionalProps name="Tom"/>
+      <FunctionalProps name="Marry"/>
     </div>
   );
 }
