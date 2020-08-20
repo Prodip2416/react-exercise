@@ -1,7 +1,11 @@
 import React from 'react';
 
-function FunctionalComponents(){
-    return <h1>Hello, from Functional Components.</h1>
-}
+// function FunctionalComponents(){
+//     return <h1>Hello, from Functional Components.</h1>
+// }
 
-export default FunctionalComponents;
+// const FunctionalComponents = () => <h1>Hello, from Functional Components.</h1>;
+
+export const FunctionalComponents = () => <h1>Hello, from Functional Components.</h1>;
+
+// export default FunctionalComponents;
