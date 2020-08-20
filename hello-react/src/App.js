@@ -10,7 +10,8 @@ import Hello from './components/Hello';
 // import JSX from './components/JSX';
 // import FunctionalProps from './components/FunctionalProps';
 // import ClassProps from './components/ClassProps';
-import State from './components/State';
+// import State from './components/State';
+import SetState from './components/SetState';
 
 function App() {
   return (
@@ -32,7 +33,8 @@ function App() {
         <p>This a Marry Paragraph</p>
       </ClassProps> */}
 
-      <State/>
+      {/* <State/> */}
+      <SetState/>
     </div>
   );
 }
