@@ -9,7 +9,8 @@ import Hello from './components/Hello';
 // import ClassComponents from './components/ClassComponents';
 // import JSX from './components/JSX';
 // import FunctionalProps from './components/FunctionalProps';
-import ClassProps from './components/ClassProps';
+// import ClassProps from './components/ClassProps';
+import State from './components/State';
 
 function App() {
   return (
@@ -25,11 +26,13 @@ function App() {
       </FunctionalProps>
       <FunctionalProps name="Tom"/>
       <FunctionalProps name="Marry"/> */}
-      <ClassProps name="Piter"/>
+      {/* <ClassProps name="Piter"/>
       <ClassProps name="Tom"/>
       <ClassProps name="Marry">
         <p>This a Marry Paragraph</p>
-      </ClassProps>
+      </ClassProps> */}
+
+      <State/>
     </div>
   );
 }
