@@ -8,7 +8,8 @@ import Hello from './components/Hello';
 // import {FunctionalComponents} from './components/FunctionalComponents';
 // import ClassComponents from './components/ClassComponents';
 // import JSX from './components/JSX';
-import FunctionalProps from './components/FunctionalProps';
+// import FunctionalProps from './components/FunctionalProps';
+import ClassProps from './components/ClassProps';
 
 function App() {
   return (
@@ -19,11 +20,16 @@ function App() {
       {/* <FunctionalComponents/>
       <ClassComponents/>
       <JSX/> */}
-      <FunctionalProps name="Piter">
+      {/* <FunctionalProps name="Piter">
         <p>This a Piter Paragraph.</p>
       </FunctionalProps>
       <FunctionalProps name="Tom"/>
-      <FunctionalProps name="Marry"/>
+      <FunctionalProps name="Marry"/> */}
+      <ClassProps name="Piter"/>
+      <ClassProps name="Tom"/>
+      <ClassProps name="Marry">
+        <p>This a Marry Paragraph</p>
+      </ClassProps>
     </div>
   );
 }
