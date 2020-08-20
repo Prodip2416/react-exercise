@@ -6,6 +6,7 @@ import Welcome from './components/Welcome';
 import Hello from './components/Hello';
 // import FunctionalComponents from './components/FunctionalComponents';
 import {FunctionalComponents} from './components/FunctionalComponents';
+import ClassComponents from './components/ClassComponents';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       {/* <Welcome/> */}
       {/* <Hello/> */}
       <FunctionalComponents/>
+      <ClassComponents/>
     </div>
   );
 }
