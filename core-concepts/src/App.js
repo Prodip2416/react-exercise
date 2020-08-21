@@ -3,6 +3,14 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const person = {
+    name: "Piter",
+    hobby: "Programming"
+  }
+  const myStyle = {
+    color:"red",
+    backgroundColor:"cyan"
+  }
   return (
     <div className="App">
       <header className="App-header">
@@ -10,14 +18,11 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <p>
+          My First Paragraph on React
+        </p>
+        <p style={myStyle} style={{color:"black"}}>Name : {person.name} Hobby {person.hobby}</p>
+        {2010 + 10}
       </header>
     </div>
   );
