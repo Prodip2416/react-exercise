@@ -25,18 +25,19 @@ function App() {
     <div className="App">
       <h1>React Components</h1>
       <div>
-        <Product product={productList[0]} />
+        {
+          productList.map(pd => <Product product={pd} />)
+        }
+        {/* <Product product={productList[0]} />
         <Product product={productList[1]} />
         <Product product={productList[2]} />
-        <Product product={productList[3]} />
+        <Product product={productList[3]} /> */}
       </div>
-      <div style={{marginTop:'250px'}}>
+      <div style={{ marginTop: '250px' }}>
         <Person name="Sakib" hobby="Bolling" />
         <Person name="Mushi" hobby="Wicket-kipping" />
         <Person name="Tamim" hobby="Bating" />
       </div>
-
-
     </div>
   );
 }
