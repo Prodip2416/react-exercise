@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -40,21 +40,46 @@ function App() {
       </div>
       <Count />
       <br />
+      <Users />
+      <br />
     </div>
   );
 }
+
+function Users() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(res => res.json())
+      .then(data => setUsers(data));
+  }, [])
+
+  return (
+    <div>
+      <h3>dynamic Users : {users.length}</h3>
+      <ul>
+        {
+          users.map(user => <li> <b> Name : </b>{user.name}, <b>Email :</b> {user.email}</li>)
+        }
+      </ul>
+    </div>
+  )
+}
+
 function Count() {
-  const [count, setstate] = useState(10);
+  const [count, setState] = useState(10);
   // const Increment = () => setstate(count + 1);
   // const Decrement = () => setstate(count - 1);
   return (
     <div>
       <h1>Count : {count}</h1>
-      <button onClick={() => setstate(count + 1)}>Increase</button>
-      <button onClick={() => setstate(count - 1)}>Decrease</button>
+      <button onClick={() => setState(count + 1)}>Increase</button>
+      <button onClick={() => setState(count - 1)}>Decrease</button>
     </div>
   )
 }
+
 function Product(props) {
   // console.log(props);
   const { name, price } = props.product;
