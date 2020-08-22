@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Image from './components/Image';
 
 function App() {
+  // Nayok list
   const [nayokList, setNayokList] = useState([]);
 
   useEffect(() => {
@@ -11,6 +13,18 @@ function App() {
       .then(data => setNayokList(data))
   }, [])
 
+  // Image gallery create
+  const [imgList, setImgList] = useState([]);
+
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/photos')
+      .then(res => res.json())
+      .then(data => {
+        // console.log(data);
+        // console.log(data[0].title);
+        setImgList(data);
+      })
+  }, [])
   // const nayokList = [
   //   {
   //     name: 'Jashim',
@@ -45,6 +59,11 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
       </header>
+
+      {
+        imgList.map(item => <Image key={item.id} id={item.id} title={item.title} image={item.url} />)
+      }
+
     </div>
   );
 }
