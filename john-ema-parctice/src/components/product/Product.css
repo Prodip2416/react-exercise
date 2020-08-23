@@ -1,0 +1,22 @@
+.product{
+    display:flex;
+}
+.img-container{
+    margin:5px;
+}
+.product-title{
+    color:blue;
+    font-weight: 400;
+}
+button {
+    background-color: #f0c14b;
+    border-color: #a88734 #9c7e31 #846a29;
+    color: #111;
+    width: 200px;
+    height: 26px;
+    border-style: solid;
+    border-width: 1px;
+    cursor: pointer;
+    border-radius: 3px;
+    vertical-align: middle;
+}
