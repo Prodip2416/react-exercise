@@ -1,11 +1,12 @@
 import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
+import EventBind from './components/EventBind';
 // import Greet from './components/Greet';
 // import Welcome from './components/Welcome';
 // import Hello from './components/Hello';
-import FunctionEventHandler from './components/FunctionEventHandler';
-import ClassEventHandler from './components/ClassEventHandler';
+// import FunctionEventHandler from './components/FunctionEventHandler';
+// import ClassEventHandler from './components/ClassEventHandler';
 // import FunctionalComponents from './components/FunctionalComponents';
 // import {FunctionalComponents} from './components/FunctionalComponents';
 // import ClassComponents from './components/ClassComponents';
@@ -19,8 +20,9 @@ import ClassEventHandler from './components/ClassEventHandler';
 function App() {
   return (
     <div className="App">
-      <FunctionEventHandler/>
-      <ClassEventHandler/>
+      <EventBind/>
+      {/* <FunctionEventHandler/>
+      <ClassEventHandler/> */}
       {/* <Greet/> */}
       {/* <Welcome/> */}
       {/* <Hello/> */}

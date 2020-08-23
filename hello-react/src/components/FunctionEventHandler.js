@@ -1,7 +1,7 @@
 import React from 'react';
 
 const FunctionEventHandler = () => {
-    const clickHandler = () =>{
+    const clickHandler = () => {
         console.log('Clicked - from a function');
     }
     return (
