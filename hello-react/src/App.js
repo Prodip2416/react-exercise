@@ -1,9 +1,11 @@
 import React from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
-import Greet from './components/Greet';
-import Welcome from './components/Welcome';
-import Hello from './components/Hello';
+// import Greet from './components/Greet';
+// import Welcome from './components/Welcome';
+// import Hello from './components/Hello';
+import FunctionEventHandler from './components/FunctionEventHandler';
+import ClassEventHandler from './components/ClassEventHandler';
 // import FunctionalComponents from './components/FunctionalComponents';
 // import {FunctionalComponents} from './components/FunctionalComponents';
 // import ClassComponents from './components/ClassComponents';
@@ -12,11 +14,13 @@ import Hello from './components/Hello';
 // import ClassProps from './components/ClassProps';
 // import State from './components/State';
 // import SetState from './components/SetState';
-import Destructuring from './components/Destructuring';
+// import Destructuring from './components/Destructuring';
 
 function App() {
   return (
     <div className="App">
+      <FunctionEventHandler/>
+      <ClassEventHandler/>
       {/* <Greet/> */}
       {/* <Welcome/> */}
       {/* <Hello/> */}
@@ -36,8 +40,8 @@ function App() {
 
       {/* <State/> */}
       {/* <SetState/> */}
-      <Destructuring name="Harry" country="USA"/>
-      <Destructuring name="Piter" country="UK"/>
+      {/* <Destructuring name="Harry" country="USA"/>
+      <Destructuring name="Piter" country="UK"/> */}
     </div>
   );
 }
