@@ -5,7 +5,7 @@ const Cart = (props) => {
     const totalPopulation = totalItem.reduce((sum, item) => sum + item.population, 0);
     return (
         <div>
-            <h3>Population : {totalPopulation}</h3>
+            <h3>Total Population : {totalPopulation}</h3>
         </div>
     );
 };
