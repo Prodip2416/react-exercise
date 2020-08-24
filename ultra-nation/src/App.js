@@ -22,7 +22,7 @@ function App() {
       <h2>Country Loaded: {countries.length}</h2>
       <ul>
         {
-          countries.map(country => <Country name={country.name} /> )
+          countries.map(country => <Country key={country.alpha3Code} country={country} /> )
         }
       </ul>
       <header className="App-header">
