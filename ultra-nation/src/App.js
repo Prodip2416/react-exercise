@@ -8,13 +8,22 @@ function App() {
   useEffect(() => {
     fetch('https://restcountries.eu/rest/v2/all')
       .then(res => res.json())
-      .then(data => setCountries(data))
+      .then(data => {
+        setCountries(data);
+        console.log(data);
+      })
+      .catch(error => console.log(error))
   }, [])
 
 
   return (
     <div className="App">
-      <h2>Total Country : {countries.length}</h2>
+      <h2>Country Loaded: {countries.length}</h2>
+      <ul>
+        {
+          countries.map(country => <li>{country.name}</li>)
+        }
+      </ul>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
