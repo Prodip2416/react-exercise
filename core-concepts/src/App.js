@@ -1,11 +1,12 @@
 import React from 'react';
 import './App.css';
+import RandomUser from './components/user/RandomUser';
 
 function App() {
-  
+
   return (
     <div>
-      <h1>Hy</h1>
+      <RandomUser />
     </div>
   );
 }
