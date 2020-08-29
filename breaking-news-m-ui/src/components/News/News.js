@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles({
     root: {
@@ -18,7 +19,7 @@ const News = (props) => {
     const {title,description, urlToImage} = props.article;
     const classes = useStyles();
     return (
-        <div>
+        <Box width={1 / 3} height="75%" style={{ float: 'left',height:'400px',overflow: 'scroll'}}>
             <Card className={classes.root}>
                 <CardActionArea>
                     <CardMedia
@@ -46,7 +47,7 @@ const News = (props) => {
                       </Button>
                 </CardActions>
             </Card>
-        </div>
+        </Box>
     );
 };
 
