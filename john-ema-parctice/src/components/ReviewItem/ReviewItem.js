@@ -2,7 +2,7 @@ import React from 'react';
 import './ReviewItem.css';
 
 const ReviewItem = (props) => {
-    const { name, img, seller, price, quantity } = props.product;
+    const { name, img, seller, price, quantity, key } = props.product;
     return (
         <div className="item-cart">
             <div className="img-container">
@@ -13,7 +13,7 @@ const ReviewItem = (props) => {
                 <p>By : <small>{seller}</small></p>
                 <p>Price : ${price}</p>
                 <p>Quantity : {quantity}</p>
-                <button>Remove </button>
+                <button onClick={() => props.removeProduct(key)}>Remove </button>
             </div>
         </div>
     );

@@ -20,7 +20,7 @@ const Shop = () => {
     }
 
     return (
-        <div className="shop-container">
+        <div className="product-container">
             <div className="item-container">
                 {
                     itemCollection.map(item => <Product key={item.key} item={item} handleCart={handleCart} showAddToCart={true} />)
