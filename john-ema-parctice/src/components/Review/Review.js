@@ -1,18 +1,20 @@
-import React, { useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { getDatabaseCart } from '../../utilities/databaseManager';
 import fakeData from '../../fakeData/index';
 import ReviewItem from '../ReviewItem/ReviewItem';
-import { removeFromDatabaseCart } from '../../utilities/databaseManager';
+import { removeFromDatabaseCart, processOrder } from '../../utilities/databaseManager';
 import Cart from '../cart/Cart';
+import placeOrderImg from '../../images/giphy.gif'
 
 const Review = () => {
     const [cart, setCart] = useState([]);
+    const [orderPlace, setOrderPlace] = useState(false);
 
     useEffect(() => {
-        const getSavedItem  = getDatabaseCart(); // get from database/ LocalStorage
+        const getSavedItem = getDatabaseCart(); // get from database/ LocalStorage
         const productKeys = Object.keys(getSavedItem); // get the all key
 
-        const totalProduct = productKeys.map(key =>{ // map all the key
+        const totalProduct = productKeys.map(key => { // map all the key
             const product = fakeData.find(item => item.key === key); // get the product from key 
             product.quantity = getSavedItem[key];
             return product;
@@ -22,26 +24,42 @@ const Review = () => {
 
     }, [])
 
-    const removeProduct = (productKey) =>{
-        const remainingProduct = cart.filter(item=> item.key !== productKey);
+    const removeProduct = (productKey) => {
+        const remainingProduct = cart.filter(item => item.key !== productKey);
         setCart(remainingProduct);
         removeFromDatabaseCart(productKey); // Remove from database / localStorage
+    }
+
+    const handlePlaceOrder = () => {
+        setCart([]);
+        processOrder();
+        setOrderPlace(true);
+    }
+
+    let placeOrderStatus;
+    if (orderPlace) {
+        placeOrderStatus = <img src={placeOrderImg} alt="Order Place Done :) " />
     }
 
     return (
         <div>
             <div className="product-container">
                 <div className="item-container">
-                    <h1>Total Cart Item : {cart.length}</h1>
+                    {/* <h1>Total Cart Item : {cart.length}</h1> */}
                     {
                         cart.map(item => <ReviewItem key={item.key + Math.random()} product={item} removeProduct={removeProduct} />)
                     }
+                    {
+                        placeOrderStatus
+                    }
                 </div>
                 <div>
-                    <Cart cart={cart} />
+                    <Cart cart={cart}>
+                        <button onClick={handlePlaceOrder}>Place Order</button>
+                    </Cart>
                 </div>
             </div>
-            
+
         </div>
     );
 };

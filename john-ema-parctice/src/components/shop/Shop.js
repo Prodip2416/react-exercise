@@ -5,6 +5,7 @@ import Product from '../product/Product';
 import Cart from '../cart/Cart';
 import { addToDatabaseCart } from '../../utilities/databaseManager';
 import { getDatabaseCart } from '../../utilities/databaseManager';
+import { Link } from 'react-router-dom';
 
 
 const Shop = () => {
@@ -12,7 +13,7 @@ const Shop = () => {
     const [itemCollection, setitemCollection] = useState(totalShowingItem);
     const [cartItem, setCartItem] = useState([]);
 
-    useEffect(() => {
+    useEffect(() => { // get previous cart item from local storage
         const getSavedItem = getDatabaseCart(); // get from database/ LocalStorage
         const productKeys = Object.keys(getSavedItem); // get the all key
 
@@ -54,7 +55,11 @@ const Shop = () => {
                 }
             </div>
             <div>
-                <Cart cart={cartItem} />
+                <Cart cart={cartItem}>
+                    <Link to="/review">
+                        <button>Review Your Order</button>
+                    </Link>
+                </Cart>
             </div>
         </div>
     );

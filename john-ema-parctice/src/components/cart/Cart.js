@@ -1,6 +1,6 @@
 import React from 'react';
 import './Cart.css';
-import { Link } from 'react-router-dom';
+
 
 const Cart = (props) => {
     const totalCartItem = props.cart;
@@ -26,10 +26,10 @@ const Cart = (props) => {
                 <p>Total before tax: ${convertToFixed(beforeTax)}</p>
                 <p>Estimated Tax: ${convertToFixed(tax)}</p>
                 <p className="order-lbl">Order Total:	${convertToFixed(grandTotal)}</p>
-                <Link to="/review">
-                    <button>Review Your Order</button>
-                </Link>
-               
+                {
+                    props.children
+                }
+
             </div>
         </div>
     );
