@@ -3,6 +3,8 @@ import './Shop.css';
 import fakeData from '../../fakeData/index.js';
 import Product from '../product/Product';
 import Cart from '../cart/Cart';
+import { addToDatabaseCart } from '../../utilities/databaseManager';
+
 
 const Shop = () => {
     const totalShowingItem = fakeData.slice(0, 10);
@@ -10,17 +12,18 @@ const Shop = () => {
     const [cartItem, setCartItem] = useState([]);
 
     const handleCart = (product) => {
-       // console.log('cart', props);
         const totalCartItem = [...cartItem, product];
-        //console.log('cart', totalCartItem);
         setCartItem(totalCartItem);
+
+        const localStorageProduct = totalCartItem.filter(item => item.key === product.key);
+        addToDatabaseCart(product.key, localStorageProduct.length);
     }
 
     return (
         <div className="shop-container">
             <div className="item-container">
                 {
-                    itemCollection.map(item => <Product key={item.key} item={item} handleCart={handleCart} />)
+                    itemCollection.map(item => <Product key={item.key} item={item} handleCart={handleCart} showAddToCart={true} />)
                 }
             </div>
             <div>
