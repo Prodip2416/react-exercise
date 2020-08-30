@@ -1,15 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Shop.css';
 import fakeData from '../../fakeData/index.js';
 import Product from '../product/Product';
 import Cart from '../cart/Cart';
 import { addToDatabaseCart } from '../../utilities/databaseManager';
+import { getDatabaseCart } from '../../utilities/databaseManager';
 
 
 const Shop = () => {
     const totalShowingItem = fakeData.slice(0, 10);
     const [itemCollection, setitemCollection] = useState(totalShowingItem);
     const [cartItem, setCartItem] = useState([]);
+
+    useEffect(() => {
+        const getSavedItem = getDatabaseCart(); // get from database/ LocalStorage
+        const productKeys = Object.keys(getSavedItem); // get the all key
+
+        const totalProduct = productKeys.map(key => { // map all the key
+            const product = fakeData.find(item => item.key === key); // get the product from key 
+            product.quantity = getSavedItem[key];
+            return product;
+        })
+
+        setCartItem(totalProduct); // set to cart
+
+    }, [])
 
     const handleCart = (product) => {
         const addProductKey = product.key;
