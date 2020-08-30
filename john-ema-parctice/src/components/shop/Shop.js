@@ -12,11 +12,23 @@ const Shop = () => {
     const [cartItem, setCartItem] = useState([]);
 
     const handleCart = (product) => {
-        const totalCartItem = [...cartItem, product];
-        setCartItem(totalCartItem);
+        const addProductKey = product.key;
+        const sameProduct = cartItem.find(item => item.key === addProductKey);
+        let count = 1;
+        let totalCartItem = [];
 
-        const localStorageProduct = totalCartItem.filter(item => item.key === product.key);
-        addToDatabaseCart(product.key, localStorageProduct.length);
+        if(sameProduct){ // if before add to this cart
+            count = sameProduct.quantity + 1;
+            sameProduct.quantity = count;
+            const othersProduct = cartItem.filter(item => item.key !== addProductKey)
+            totalCartItem = [...othersProduct, sameProduct];
+        }else{ // if before not added to cart
+            product.quantity = count;
+            totalCartItem = [...cartItem, product];
+        }
+
+        setCartItem(totalCartItem); // added to cart
+        addToDatabaseCart(product.key, count); // added to localStorage
     }
 
     return (

@@ -21,10 +21,10 @@ const Cart = (props) => {
                 <h3>Items ordered: {totalCartItem.length}</h3>
             </div>
             <div className="cart-footer">
-                <p>Items: {convertToFixed(totalPrice)}</p>
-                <p>Shipping & Handling: {convertToFixed(totalShipping)}</p>
-                <p>Total before tax: {convertToFixed(beforeTax)}</p>
-                <p>Estimated Tax: {convertToFixed(tax)}</p>
+                <p>Item Price: ${convertToFixed(totalPrice)}</p>
+                <p>Shipping & Handling: ${convertToFixed(totalShipping)}</p>
+                <p>Total before tax: ${convertToFixed(beforeTax)}</p>
+                <p>Estimated Tax: ${convertToFixed(tax)}</p>
                 <p className="order-lbl">Order Total:	${convertToFixed(grandTotal)}</p>
                 <Link to="/review">
                     <button>Review Your Order</button>
