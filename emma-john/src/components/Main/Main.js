@@ -1,11 +1,6 @@
 import React from 'react';
 import Header from '../Header/Header'
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Shop from '../Shop/Shop';
 import Review from '../Review/Review';
 import Inventory from '../Inventory/Inventory';
