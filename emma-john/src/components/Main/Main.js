@@ -5,6 +5,7 @@ import Shop from '../Shop/Shop';
 import Review from '../Review/Review';
 import Inventory from '../Inventory/Inventory';
 import NotFound from '../NotFound/NotFound';
+import ProductDetail from '../ProductDetail/ProductDetail';
 
 function Main() {
     return (
@@ -26,6 +27,10 @@ function Main() {
 
                     <Route path="/inventory">
                         <Inventory/>
+                    </Route>
+
+                    <Route path="/product/:id">
+                        <ProductDetail/>
                     </Route>
 
                     <Route path="*">

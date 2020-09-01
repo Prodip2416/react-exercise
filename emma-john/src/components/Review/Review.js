@@ -1,9 +1,16 @@
 import React from 'react';
+import Cart from '../Cart/Cart';
 
-const Review = () => {
+const Review = (props) => {
     return (
-        <div>
-                <h1>This is Review</h1>
+        <div className="shop-container">
+            <div className="product">
+                <h1>This is review</h1>
+            </div>
+            <div className="cart">
+                <h1>This is review Cart</h1>
+                {/* <Cart/> */}
+            </div>
         </div>
     );
 };
