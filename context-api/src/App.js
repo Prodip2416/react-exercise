@@ -8,11 +8,11 @@ import Shipment from './components/Shipment/Shipment';
 export const CategoryContext = createContext();
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [category, setCategory] = useState('Laptop');
 
   return (
-    <CategoryContext.Provider value={[count, setCount]}>
-      <h1>Count : {count}</h1>
+    <CategoryContext.Provider value={[category, setCategory]}>
+      <h1>Count : {category}</h1>
       <Header />
       <Home />
       <Shipment />

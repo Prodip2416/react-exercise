@@ -3,11 +3,10 @@ import { useContext } from 'react';
 import { CategoryContext } from '../../App';
 
 const Shipment = () => {
-    const [count, setCount] = useContext(CategoryContext);
+    const [category, setCategory] = useContext(CategoryContext);
     return (
         <div>
-            <h1>This is Shipment : {count}</h1>
-            <button onClick={() => setCount(count + 1)}>Increment</button>
+            <h1>This is Shipment : {category}</h1>
         </div>
     );
 };

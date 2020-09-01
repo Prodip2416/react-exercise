@@ -3,11 +3,13 @@ import { useContext } from 'react';
 import { CategoryContext } from '../../App';
 
 const Header = () => {
-   const [count, setCount] = useContext(CategoryContext);
+    const [category, setCategory] = useContext(CategoryContext);
     return (
         <div>
-            <h1>This is Header : {count}</h1>
-            <button onClick={() => setCount(count + 1)}>Increment</button>
+            <h1>This is Header : {category}</h1>
+            <button onClick={() => setCategory('Laptop')}>Laptop</button>
+            <button onClick={() => setCategory('Camera')}>Camera</button>
+            <button onClick={() => setCategory('Phone')}>Phone</button>
         </div>
     );
 };
