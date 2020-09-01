@@ -1,12 +1,11 @@
 import React from 'react';
 import Category from '../Category/Category';
 
-const Home = (p) => {
-    const { count } = p;
+const Home = () => {
     return (
         <div style={{border: '1px solid cyan'}}>
-            <h1>This is Home : {count}</h1>
-            <Category count={count}/>
+            <h1>This is Home : </h1>
+            <Category/>
         </div>
     );
 };
