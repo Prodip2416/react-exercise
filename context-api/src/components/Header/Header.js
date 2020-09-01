@@ -1,8 +1,7 @@
 import React from 'react';
-import { useState } from 'react';
 
-const Header = () => {
-    const [count, setCount] = useState(0);
+const Header = (props) => {
+   const {count, setCount} = props;
     return (
         <div>
             <h1>This is Header : {count}</h1>
