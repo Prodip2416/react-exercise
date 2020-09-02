@@ -1,12 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import fakeData from '../../fakeData/index';
 import Product from '../Product/Product';
 import './Shop.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faCartPlus } from '@fortawesome/free-solid-svg-icons';
 import Cart from '../Cart/Cart';
-import { useState } from 'react';
 import { addToDatabaseCart, getDatabaseCart } from '../../utilities/databaseManager';
+import { Link } from 'react-router-dom';
+
 
 const Shop = () => {
     const data = fakeData.slice(0, 15);
@@ -55,7 +56,11 @@ const Shop = () => {
                 }
             </div>
             <div className="cart">
-                <Cart cart={cart} />
+                <Cart cart={cart}>
+                    <Link to="/review">
+                        <button className="cart-btn">Order Review</button>
+                    </Link>
+                </Cart>
             </div>
         </div>
     );
