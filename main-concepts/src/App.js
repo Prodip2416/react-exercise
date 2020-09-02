@@ -1,12 +1,13 @@
 import React from 'react';
 import './App.css';
-import State from './components/State/State';
+import ConditionalRendering from './components/ConditionalRendering/ConditionalRendering';
+
 
 function App() {
 
   return (
     <div>
-      <State />
+      <ConditionalRendering isLoggedIn={true}/>
     </div>
   );
 }

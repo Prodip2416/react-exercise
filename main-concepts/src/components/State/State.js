@@ -4,11 +4,11 @@ import { useEffect } from 'react';
 const State = () => {
     const [time, setTime] = useState(new Date().toLocaleTimeString());
 
-    useEffect(()=>{
-        setInterval(()=>{
+    useEffect(() => {
+        setInterval(() => {
             setTime(new Date().toLocaleTimeString());
-        },1000)      
-    },[])
+        }, 1000)
+    }, [])
 
     return (
         <div>
