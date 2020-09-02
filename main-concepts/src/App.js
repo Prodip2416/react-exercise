@@ -1,15 +1,12 @@
 import React from 'react';
 import './App.css';
-import JSX from './components/JSX/JSX';
-import RenderElement from './components/RenderElement/RenderElement';
-import Component from './components/Component/Component';
+import State from './components/State/State';
 
 function App() {
+
   return (
     <div>
-      <Component name="Bob"/>
-      <Component name="Todd"/>
-      <Component name="John"/>
+      <State />
     </div>
   );
 }
