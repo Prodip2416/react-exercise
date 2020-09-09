@@ -5,11 +5,13 @@ import fakeData from '../../fakeData/index';
 import Product from '../Product/Product';
 import ReviewDetail from '../ReviewDetail/ReviewDetail';
 import logo from '../../images/giphy.gif';
+import { useHistory } from 'react-router-dom';
 
 
 const Review = (props) => {
     const [cart, setCart] = useState([]);
     const [showLogo, setShowLogo] = useState(false);
+    const history = useHistory();
 
     useEffect(() => {
         const getSavedItem = getDatabaseCart();
@@ -30,10 +32,11 @@ const Review = (props) => {
     }
 
     let status;
-    const placeOrderHandle = () => {
-        setCart([]);
-        processOrder();
-        setShowLogo(true);
+    const proceedCheckoutHandle = () => {
+        // setCart([]);
+        // processOrder();
+        // setShowLogo(true);
+        history.push('/shipment');
     }
     if (showLogo) {
         status =<div style={{textAlign: 'center' }}>
@@ -54,7 +57,7 @@ const Review = (props) => {
             <div className="cart">
                 <h1>This is review Cart</h1>
                 <Cart key={cart.key + Math.random()} cart={cart}>
-                    <button className="cart-btn" onClick={() => placeOrderHandle()}> Place Order</button>
+                    <button className="cart-btn" onClick={() => proceedCheckoutHandle()}> Proceed Checkout</button>
                 </Cart>
             </div>
         </div>
