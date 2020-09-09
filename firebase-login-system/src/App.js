@@ -5,10 +5,10 @@ import Login from './components/Login/Login';
 
 function App() {
   return (
-    <div >
+    <div>
       <Login/>
     </div>
   )
 }
-
+  
 export default App;

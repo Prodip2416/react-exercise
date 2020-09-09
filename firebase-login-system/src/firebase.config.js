@@ -8,3 +8,6 @@ const firebaseConfig = {
     appId: "1:83202985033:web:2dea1f14a6a85c0bd08398"
 };
 export default firebaseConfig;
+
+// https://login-system-app.netlify.app/
+// fir-login-system-b189d.firebaseapp.com

@@ -16,59 +16,75 @@ import Welcome from '../Welcome/Welcome';
 firebase.initializeApp(firebaseConfig);
 
 function Login() {
-    const [user, setUser] = useState({naem:'', img:'',isSignIn: false})
+    const [user, setUser] = useState({ name: '', email: '', img: '', isSignIn: false })
     const googleProvider = new firebase.auth.GoogleAuthProvider();
+    const fackBookProvider = new firebase.auth.FacebookAuthProvider();
+    var githubProvider = new firebase.auth.GithubAuthProvider();
 
-    const googleSignIn = () =>{
-        firebase.auth().signInWithPopup(googleProvider).then(function (result) {
-            var token = result.credential.accessToken;
-          console.log(result.user);
-          const newUser = {...user};
-          newUser.isSignIn= true;
-          setUser(newUser);
-
+    const googleSignIn = () => {
+        firebase.auth().signInWithPopup(googleProvider).then((result) => {
+            console.log(result.user);
+            const newUser = { ...user };
+            newUser.isSignIn = true;
+            newUser.name = result.user.displayName;
+            newUser.email = result.user.email;
+            newUser.img = result.user.photoURL;
+            setUser(newUser);
         }).catch(function (error) {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            // The email of the user's account used.
-            var email = error.email;
-            // The firebase.auth.AuthCredential type that was used.
-            var credential = error.credential;
-            // ...
+           console.log(error.code);
         });
     }
-    const handleSignOut = () => {
+    const signOut = () => {
         firebase.auth().signOut().then(function () {
             const newUser = { ...user };
             newUser.isSignIn = false;
             setUser(newUser);
         }).catch(function (error) {
-            // An error happened.
+            console.log(error.code);
+        });
+    }
+    const faceBookSignIn = () => {
+        firebase.auth().signInWithPopup(fackBookProvider).then(function (result) {
+            const newUser = { ...user };
+            newUser.isSignIn = true;
+            newUser.name = result.user.displayName;
+            newUser.email = result.user.email;
+            newUser.img = result.user.photoURL;
+            setUser(newUser);
+        }).catch(function (error) {
+            console.log(error.code);
+        });
+    }
+    const githubSignIn = () =>{
+        firebase.auth().signInWithPopup(githubProvider).then(function (result) {
+            console.log(result);
+        }).catch(function (error) {
+            console.log(error.code);
         });
     }
 
     return (
         <div className="login-form">
             {
-                user.isSignIn ? <Welcome handleSignOut={handleSignOut} /> : <form style={{ textAlign: 'center' }}>
-                    <Box m={3} mt={3} >
-                        <TextField id="outlined-basic" label="email" variant="outlined" />
-                    </Box>
-                    <Box m={3}>
-                        <TextField id="outlined-basic" type="password" label="password" variant="outlined" />
-                    </Box>
-                    <Box display="flex" justifyContent="center">
-                        <Box m={2}><FontAwesomeIcon onClick={googleSignIn} icon={faGoogle} style={{ color: 'red' }} /></Box>
-                        <Box m={2}><FacebookIcon color="primary" /></Box>
-                        <Box m={2}><GitHubIcon /></Box>
-                    </Box>
-                    <Box m={2}>
-                        <TextField id="outlined-basic" type="submit" variant="outlined" />
-                    </Box>
-                </form>
+                user.isSignIn ? <Welcome signOut={signOut} user={user} />
+                    : <form style={{ textAlign: 'center' }}>
+                        <Box m={3} mt={3} >
+                            <TextField id="outlined-basic" label="email" variant="outlined" />
+                        </Box>
+                        <Box m={3}>
+                            <TextField id="outlined-basic" type="password" label="password" variant="outlined" />
+                        </Box>
+                        <Box display="flex" justifyContent="center">
+                            <Box m={2}><FontAwesomeIcon onClick={googleSignIn} icon={faGoogle} style={{ color: 'red' }} /></Box>
+                            <Box m={2}><FacebookIcon onClick={faceBookSignIn} color="primary" /></Box>
+                            <Box m={2}><GitHubIcon onClick={githubSignIn} /></Box>
+                        </Box>
+                        <Box m={2}>
+                            <TextField id="outlined-basic" type="submit" variant="outlined" />
+                        </Box>
+                    </form>
             }
-            
+
         </div>
     )
 }
