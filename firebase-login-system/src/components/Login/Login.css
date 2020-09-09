@@ -1,0 +1,10 @@
+.login-form{
+    width:500px;
+    margin-left: 30%;
+    margin-top:5%;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px grey;
+    background-color: rgb(243, 243, 243);
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+}
