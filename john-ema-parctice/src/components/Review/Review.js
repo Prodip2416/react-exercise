@@ -5,10 +5,12 @@ import ReviewItem from '../ReviewItem/ReviewItem';
 import { removeFromDatabaseCart, processOrder } from '../../utilities/databaseManager';
 import Cart from '../cart/Cart';
 import placeOrderImg from '../../images/giphy.gif'
+import { useHistory } from 'react-router-dom';
 
 const Review = () => {
     const [cart, setCart] = useState([]);
     const [orderPlace, setOrderPlace] = useState(false);
+    const history = useHistory();
 
     useEffect(() => {
         const getSavedItem = getDatabaseCart(); // get from database/ LocalStorage
@@ -31,9 +33,10 @@ const Review = () => {
     }
 
     const handlePlaceOrder = () => {
-        setCart([]);
-        processOrder();
-        setOrderPlace(true);
+        // setCart([]);
+        // processOrder();
+        // setOrderPlace(true);
+        history.push('/shipment');
     }
 
     let placeOrderStatus;
@@ -45,7 +48,6 @@ const Review = () => {
         <div>
             <div className="product-container">
                 <div className="item-container">
-                    {/* <h1>Total Cart Item : {cart.length}</h1> */}
                     {
                         cart.map(item => <ReviewItem key={item.key + Math.random()} product={item} removeProduct={removeProduct} />)
                     }
@@ -55,7 +57,7 @@ const Review = () => {
                 </div>
                 <div>
                     <Cart cart={cart}>
-                        <button onClick={handlePlaceOrder}>Place Order</button>
+                        <button onClick={handlePlaceOrder}>Proceed Checkout</button>
                     </Cart>
                 </div>
             </div>
