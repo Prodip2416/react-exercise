@@ -11,13 +11,15 @@ import * as firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from '../../firebase.config';
 import Welcome from '../Welcome/Welcome';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 
 
 firebase.initializeApp(firebaseConfig);
 
 function Login() {
     const [user, setUser] = useState({ name: '', email: '', img: '', isSignIn: false });
-
+    const [isNewUser, setIsNewUser] = useState(false);
     const googleProvider = new firebase.auth.GoogleAuthProvider();
     const faceBookProvider = new firebase.auth.FacebookAuthProvider();
     const githubProvider = new firebase.auth.GithubAuthProvider();
@@ -57,9 +59,53 @@ function Login() {
         setUser(newUser);
     }
 
+    const signOut = () => {
+        firebase.auth().signOut().then(() => {
+            const newUser = { ...user };
+            newUser.isSignIn = false;
+            setUser(newUser);
+            setIsNewUser(false);
+        }).catch(function (error) {
+            console.log(error.code);
+        });
+    }
+
     const handleSubmit = (e) => {
-        console.log('handle submit');
+        if (isNewUser && user.email && user.password) {
+            firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
+                .then(res => {
+                    console.log(res);
+                    userInfoUpdate(user.name);
+                    setUserData(res);
+                })
+                .catch(function (error) {
+                    console.log(error.code);
+                    console.log(error.message);
+                });
+        } else if (!isNewUser && user.email && user.password) {
+            firebase.auth().signInWithEmailAndPassword(user.email, user.password)
+                .then(res => {
+                    setUserData(res);
+                })
+                .catch(function (error) {
+                    console.log(error.code);
+                    console.log(error.message);
+                });
+        }
+
         e.preventDefault();
+    }
+    
+    const userInfoUpdate = name => {
+        const user = firebase.auth().currentUser;
+
+        user.updateProfile({
+            displayName: name
+        }).then(function () {
+            console.log('user name Update successful');
+        }).catch(function (error) {
+            console.log(error);
+        });
     }
 
     const handleBlur = (e) => {
@@ -72,21 +118,13 @@ function Login() {
             const mustOneDigit = /\d{1}/.test(e.target.value);
             isValidForm = greaterThanFive && mustOneDigit;
         }
-        if(isValidForm){
-            const newUser = {...user};
+        if (isValidForm) {
+            const newUser = { ...user };
             newUser[e.target.name] = e.target.value;
             setUser(newUser);
+        } else {
+            console.log('Please provide email and password');
         }
-    }
-
-    const signOut = () => {
-        firebase.auth().signOut().then(() => {
-            const newUser = { ...user };
-            newUser.isSignIn = false;
-            setUser(newUser);
-        }).catch(function (error) {
-            console.log(error.code);
-        });
     }
 
     return (
@@ -94,6 +132,23 @@ function Login() {
             {
                 user.isSignIn ? <Welcome signOut={signOut} user={user} />
                     : <form style={{ textAlign: 'center' }} onSubmit={handleSubmit}>
+                        <Box m={3} mt={3}>
+                            <FormControlLabel
+                                control={
+                                    <Checkbox
+                                        name="checkedB"
+                                        color="primary"
+                                        onClick={() => setIsNewUser(!isNewUser)}
+                                    />
+                                }
+                                label="Is New User"
+                            />
+                        </Box>
+                        {
+                            isNewUser && <Box m={3} mt={3} >
+                                <TextField id="outlined-basic" onBlur={handleBlur} name="name" label="name" variant="outlined" />
+                            </Box>
+                        }
                         <Box m={3} mt={3} >
                             <TextField id="outlined-basic" onBlur={handleBlur} name="email" label="Email" variant="outlined" />
                         </Box>
