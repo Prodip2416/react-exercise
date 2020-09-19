@@ -3,7 +3,7 @@ import { UserContext } from '../Main/Main';
 import { useHistory, useLocation } from 'react-router-dom';
 import {
     firebaseInitialized, googleSignIn, fbSignIn, signOut, createUserWithEmailAndPassword,
-    signInWithEmailAndPassword
+    signInWithEmailAndPassword, emailVerified, resetPassword
 } from './LoginManager';
 
 firebaseInitialized();
@@ -39,6 +39,7 @@ function Login() {
             createUserWithEmailAndPassword(user.name, user.email, user.password)
                 .then(res => {
                     handleResult(res, true);
+                    emailVerified();
                 })
         }
         if (!newUser && user.email && user.password) {
@@ -76,6 +77,7 @@ function Login() {
             setUser(newUser);
         }
     }
+ 
 
     return (
         <div style={{ textAlign: 'center' }}>
@@ -98,7 +100,8 @@ function Login() {
                 {newUser && <input type="text" name="name" placeholder="name" onBlur={handleBlur} />}<br />
                 <input type="text" name="email" onBlur={handleBlur} placeholder="your email" required /><br />
                 <input type="password" name="password" onBlur={handleBlur} placeholder="your password" required /><br />
-                <input type="submit" value={newUser ? 'Sign Up' : 'Sign In'} />
+                <input type="submit" value={newUser ? 'Sign Up' : 'Sign In'} /><br/>
+                <button onClick={() => resetPassword(user.email)}>Reset or forget your password</button>
             </form>
             <p style={{ color: 'red' }}>{user.error}</p>
             {user.success && <p style={{ color: 'green' }}>User {newUser ? 'Created' : 'Logged In'} successfully</p>}

@@ -93,3 +93,23 @@ const userInfoUpdate = name => {
         console.log(error);
     });
 }
+
+export const emailVerified = () => {
+    var user = firebase.auth().currentUser;
+
+    user.sendEmailVerification().then(function () {
+        // Email sent.
+    }).catch(function (error) {
+        // An error happened.
+    });
+}
+
+export const resetPassword = (email) => {
+    var auth = firebase.auth();
+
+    auth.sendPasswordResetEmail(email).then(function () {
+        // Email sent.
+    }).catch(function (error) {
+        // An error happened.
+    });
+}
