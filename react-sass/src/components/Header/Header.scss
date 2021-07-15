@@ -1,0 +1,17 @@
+$borderColor : cyan;
+
+.first-container{
+    border: 1px solid $borderColor;
+    margin: 2px;
+    color: green;
+}
+.second-container{
+    border: 1px solid $borderColor;
+    margin: 2px;
+    color: lightblue;
+}
+.third-container{
+    border: 1px solid $borderColor;
+    margin: 2px;
+    color: gold;
+}
